@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bleson C Denson – Software Developer | Java Backend | Full-Stack Development. MCA Graduate 2026 with expertise in Vert.x, MongoDB, React JS, and more." />
+  <meta name="keywords" content="Bleson Denson, Software Developer, Java, Backend Developer, Full Stack, Vert.x, React, Portfolio" />
+  <meta property="og:title" content="Bleson C Denson | Software Developer Portfolio" />
+  <meta property="og:description" content="Motivated MCA graduate with hands-on experience in backend and full-stack development." />
+  <title>Bleson C Denson | Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== CURSOR FOLLOWER ===== -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">&lt;BD /&gt;</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <p class="loader-text">Initializing Portfolio...</p>
+    </div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">&lt;BD /&gt;</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="open-to-work-badge nav-badge">
+          <span class="pulse-dot"></span>
+          Open to Work
+        </div>
+        <a href="resume.pdf" download="Bleson_Denson_Resume.pdf" class="btn btn-resume-nav" id="nav-resume-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="hero_bg.png" alt="" class="hero-bg-img" />
+      <div class="hero-overlay"></div>
+      <canvas id="particles-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag animate-in" style="--delay: 0.1s">
+        <span class="pulse-dot"></span>
+        Available for Opportunities
+      </div>
+      <div class="hero-avatar animate-in" style="--delay: 0.2s">
+        <div class="avatar-ring">
+          <img src="professional_photo.jpeg" alt="Bleson C Denson" class="avatar-img" />
+        </div>
+      </div>
+      <h1 class="hero-title animate-in" style="--delay: 0.3s">
+        <span class="name-line">Bleson C Denson</span>
+      </h1>
+      <div class="hero-roles animate-in" style="--delay: 0.4s">
+        <span class="role-static">I build &nbsp;</span>
+        <span class="role-type" id="role-type"></span>
+        <span class="role-cursor">|</span>
+      </div>
+      <p class="hero-summary animate-in" style="--delay: 0.5s">
+        Motivated MCA Graduate (2026) · Java Backend · Full-Stack Developer<br/>
+        Building production-level systems that matter.
+      </p>
+      <div class="hero-cta animate-in" style="--delay: 0.6s">
+        <a href="#contact" class="btn btn-primary" id="hero-contact-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get In Touch
+        </a>
+        <a href="resume.pdf" download="Bleson_Denson_Resume.pdf" class="btn btn-resume" id="hero-resume-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a href="#projects" class="btn btn-outline" id="hero-projects-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          View Projects
+        </a>
+      </div>
+      <div class="hero-stats animate-in" style="--delay: 0.7s">
+        <div class="stat-item">
+          <span class="stat-number" data-target="13">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Modules Built</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="4">0</span>
+          <span class="stat-label">Major Projects</span>
+        </div>
+      </div>
+      <div class="hero-socials animate-in" style="--delay: 0.8s">
+        <a href="https://linkedin.com/in/bleson-denson" target="_blank" rel="noopener" class="social-link" id="linkedin-link" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/bleson2003" target="_blank" rel="noopener" class="social-link" id="github-link" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="mailto:blesson.2018.6@gmail.com" class="social-link" id="email-link" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01 / About</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">The story behind the code</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <div class="about-image-wrapper">
+            <div class="about-img-frame">
+              <img src="professional_photo.jpeg" alt="Bleson C Denson" class="about-img" />
+            </div>
+            <div class="about-img-decoration"></div>
+          </div>
+          <div class="open-to-work-card">
+            <div class="otw-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="otw-info">
+              <span class="otw-title">Open to Work</span>
+              <span class="otw-desc">Available for full-time roles</span>
+            </div>
+            <span class="pulse-dot"></span>
+          </div>
+        </div>
+        <div class="about-right reveal">
+          <div class="about-text">
+            <p>
+              I'm a <strong>motivated MCA graduate (2026)</strong> from Kristu Jayanti University, Karnataka, with hands-on experience in backend and full-stack development. I love turning complex problems into elegant, scalable solutions.
+            </p>
+            <p>
+              At <strong>Beepeaks Private Limited</strong>, I've been part of building an enterprise-grade HR & Workforce Management platform — a cloud-based SaaS product spanning 13+ modules and serving multiple organizations.
+            </p>
+            <p>
+              My internship at the <strong>KJU Software Development Cell</strong> gave me real-world experience building production REST APIs with Java &amp; Vert.x, working on a university placement portal through an entire placement season.
+            </p>
+          </div>
+          <div class="about-details">
+            <div class="detail-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Bengaluru, Karnataka, India</span>
+            </div>
+            <div class="detail-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l1.27-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+91 9497182373</span>
+            </div>
+            <div class="detail-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>blesson.2018.6@gmail.com</span>
+            </div>
+            <div class="detail-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>MCA – Kristu Jayanti University (2026)</span>
+            </div>
+          </div>
+          <div class="about-languages">
+            <h4>Languages</h4>
+            <div class="lang-chips">
+              <span class="lang-chip">🇬🇧 English – Fluent</span>
+              <span class="lang-chip">🇮🇳 Malayalam – Native</span>
+              <span class="lang-chip">🇮🇳 Hindi – Intermediate</span>
+              <span class="lang-chip">🇮🇳 Tamil – Intermediate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE SECTION ===== -->
+  <section class="section experience-section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02 / Experience</span>
+        <h2 class="section-title">Work Experience</h2>
+        <p class="section-subtitle">Where I've built things that matter</p>
+      </div>
+      <div class="timeline">
+        <!-- Experience 1 -->
+        <div class="timeline-item reveal" id="exp-beepeaks">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="timeline-title-group">
+                <h3 class="timeline-role">Software Developer</h3>
+                <span class="timeline-company">Beepeaks Private Limited, Bengaluru</span>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Jan 2026 – Present
+                </span>
+                <span class="timeline-badge current">Current</span>
+              </div>
+            </div>
+            <div class="timeline-product">
+              <span class="product-tag">Beepeaks EHRWMS</span>
+              <span class="product-desc">Enterprise HR & Workforce Management Platform</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Worked on development & product workflow design of an enterprise cloud-based HR & WMS serving multiple organisations across <strong>13+ modules</strong> and <strong>4 user roles</strong>.</li>
+              <li>Collaborated with frontend and backend teams to implement responsive modules for attendance tracking, leave management, payroll processing, expense claims, and real-time notifications.</li>
+              <li>Implemented <strong>JWT-based authentication</strong> workflows and role-based access control logic across user-facing modules.</li>
+              <li>Integrated <strong>Firebase Cloud Messaging</strong> for real-time push notifications and <strong>AWS S3</strong> for document storage.</li>
+              <li>Contributed to UI prototyping in <strong>Figma</strong> and coordinated closely with developers during React JS & Tailwind CSS implementation.</li>
+              <li>Participated in requirement analysis, workflow planning, usability improvements, and Agile-based product development sprints.</li>
+            </ul>
+            <div class="timeline-tech">
+              <span class="tech-tag">React JS</span>
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">Python Django</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">AWS S3</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">Figma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="timeline-item reveal" id="exp-kju">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="timeline-title-group">
+                <h3 class="timeline-role">Backend Developer Intern</h3>
+                <span class="timeline-company">Software Development Cell, Kristu Jayanti University</span>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Jun 2025 – Jul 2025
+                </span>
+              </div>
+            </div>
+            <div class="timeline-product">
+              <span class="product-tag">KJU Placement Portal</span>
+              <span class="product-desc">University Placement Management System</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Developed REST APIs using <strong>Java and Vert.x</strong> for a university placement portal supporting students and multiple administrator roles.</li>
+              <li>Designed <strong>MongoDB schemas</strong> for job postings, student profiles, and multi-round application tracking; integrated <strong>Redis</strong> for real-time notification handling.</li>
+              <li>Implemented round-wise placement workflow logic including eligibility checks, status transitions, and result publishing.</li>
+              <li>Tested and validated all APIs using <strong>Postman</strong>; documented endpoints to support team onboarding and maintainability.</li>
+              <li>Participated in Agile sprint planning, estimation, and code reviews within a collaborative engineering team.</li>
+            </ul>
+            <div class="timeline-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Vert.x</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">Postman</span>
+              <span class="tech-tag">Agile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="education-grid">
+        <div class="section-sub-header reveal">
+          <h3>Education</h3>
+        </div>
+        <div class="edu-cards">
+          <div class="edu-card reveal" id="edu-mca">
+            <div class="edu-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="edu-info">
+              <h4>Master of Computer Applications (MCA)</h4>
+              <p>Kristu Jayanti University, Karnataka</p>
+              <div class="edu-meta">
+                <span>2024 – 2026</span>
+                <span class="edu-score">64.62%</span>
+              </div>
+            </div>
+          </div>
+          <div class="edu-card reveal" id="edu-bca">
+            <div class="edu-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="edu-info">
+              <h4>Bachelor of Computer Applications (BCA)</h4>
+              <p>Sri Krishna Arts & Science College, Tamil Nadu</p>
+              <div class="edu-meta">
+                <span>2021 – 2024</span>
+                <span class="edu-score">70.6%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 / Projects</span>
+        <h2 class="section-title">Technical Projects</h2>
+        <p class="section-subtitle">Things I've built with passion</p>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project 1: KJU Placement Portal -->
+        <div class="project-card reveal" id="proj-kju">
+          <div class="project-card-header">
+            <div class="project-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="project-links">
+              <span class="project-type-badge backend">Backend</span>
+            </div>
+          </div>
+          <h3 class="project-title">KJU Placement Portal</h3>
+          <p class="project-desc">
+            Backend modules for a university placement portal with role-based workflows. Built REST APIs for job postings, multi-round application management, and result tracking using Vert.x. Implemented round-wise eligibility checks, status transitions, and result publishing.
+          </p>
+          <div class="project-tech">
+            <span class="tech-pill">Java</span>
+            <span class="tech-pill">Vert.x</span>
+            <span class="tech-pill">MongoDB</span>
+            <span class="tech-pill">Redis</span>
+            <span class="tech-pill">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Beepeaks EHRWMS -->
+        <div class="project-card reveal featured" id="proj-ehrwms">
+          <div class="project-card-header">
+            <div class="project-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="project-links">
+              <span class="project-type-badge fullstack">Full-Stack</span>
+            </div>
+          </div>
+          <h3 class="project-title">Beepeaks EHRWMS</h3>
+          <p class="project-desc">
+            Enterprise HR & Workforce Management System built as a Progressive Web Application. Contributed across <strong>13+ modules</strong>, frontend in React JS, backend API integration via Python Django, cloud infrastructure with Firebase Firestore and AWS S3. Implemented payroll computation, PDF payslip generation, and role-based dashboards.
+          </p>
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-num">13+</span>
+              <span class="highlight-label">Modules</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-num">4</span>
+              <span class="highlight-label">User Roles</span>
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-pill">React JS</span>
+            <span class="tech-pill">Tailwind CSS</span>
+            <span class="tech-pill">Python Django</span>
+            <span class="tech-pill">Firebase</span>
+            <span class="tech-pill">AWS S3</span>
+            <span class="tech-pill">Figma</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Voice Assistant -->
+        <div class="project-card reveal" id="proj-voice">
+          <div class="project-card-header">
+            <div class="project-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <div class="project-links">
+              <span class="project-type-badge ai">AI/Accessibility</span>
+            </div>
+          </div>
+          <h3 class="project-title">Voice-Based Virtual Assistant for the Blind</h3>
+          <p class="project-desc">
+            Accessibility-first voice-controlled assistant with modular command-processing for web search, file management, and system control. Focused on low-latency audio feedback, graceful error handling, and interaction design for visually impaired users.
+          </p>
+          <div class="project-tech">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Speech-to-Text</span>
+            <span class="tech-pill">TTS</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Peer Notes Platform -->
+        <div class="project-card reveal" id="proj-notes">
+          <div class="project-card-header">
+            <div class="project-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="project-links">
+              <span class="project-type-badge backend">Backend</span>
+            </div>
+          </div>
+          <h3 class="project-title">Peer Notes Sharing Platform</h3>
+          <p class="project-desc">
+            REST APIs for a collaborative academic note-sharing platform with admin approval workflow, role-based access control, and MongoDB indexing for efficient content search and retrieval.
+          </p>
+          <div class="project-tech">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">REST APIs</span>
+            <span class="tech-pill">MongoDB</span>
+            <span class="tech-pill">RBAC</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS SECTION ===== -->
+  <section class="section skills-section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04 / Skills</span>
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">My toolkit for building great software</p>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-category reveal" id="skill-lang">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Languages</h3>
+          </div>
+          <div class="tools-chips">
+            <span class="tool-chip">Java</span>
+            <span class="tool-chip">JavaScript</span>
+            <span class="tool-chip">Python</span>
+            <span class="tool-chip">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" id="skill-frontend">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            </div>
+            <h3>Frontend</h3>
+          </div>
+          <div class="tools-chips">
+            <span class="tool-chip">React JS</span>
+            <span class="tool-chip">HTML / CSS</span>
+            <span class="tool-chip">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" id="skill-backend">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0-1.1 4.4a2 2 0 0 1-1.9 1.6H6.9a2 2 0 0 1-1.9-1.6L4 16"/></svg>
+            </div>
+            <h3>Backend</h3>
+          </div>
+          <div class="tools-chips">
+            <span class="tool-chip">Vert.x</span>
+            <span class="tool-chip">Python Django</span>
+            <span class="tool-chip">REST APIs</span>
+            <span class="tool-chip">JWT / RBAC</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" id="skill-db">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h3>Databases</h3>
+          </div>
+          <div class="tools-chips">
+            <span class="tool-chip">MongoDB</span>
+            <span class="tool-chip">Redis</span>
+            <span class="tool-chip">Firebase Firestore</span>
+            <span class="tool-chip">MySQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" id="skill-tools">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Tools & Platforms</h3>
+          </div>
+          <div class="tools-chips">
+            <span class="tool-chip">Git / GitHub</span>
+            <span class="tool-chip">Postman</span>
+            <span class="tool-chip">IntelliJ IDEA</span>
+            <span class="tool-chip">VS Code</span>
+            <span class="tool-chip">Maven</span>
+            <span class="tool-chip">AWS S3</span>
+            <span class="tool-chip">Firebase FCM</span>
+            <span class="tool-chip">Figma</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" id="skill-concepts">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </div>
+            <h3>Concepts</h3>
+          </div>
+          <div class="tools-chips">
+            <span class="tool-chip">OOP</span>
+            <span class="tool-chip">DBMS</span>
+            <span class="tool-chip">Agile / Scrum</span>
+            <span class="tool-chip">SDLC</span>
+            <span class="tool-chip">Responsive Design</span>
+            <span class="tool-chip">CI/CD</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Certifications & Achievements -->
+      <div class="achievements-section reveal">
+        <h3 class="achievements-title">Achievements & Certifications</h3>
+        <div class="achievements-grid">
+          <div class="achievement-card" id="cert-azure">
+            <div class="achievement-icon cert">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>Azure Fundamentals (AZ-900)</h4>
+              <p>Microsoft · 2025</p>
+            </div>
+          </div>
+          <div class="achievement-card" id="cert-java">
+            <div class="achievement-icon cert">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>Core Java</h4>
+              <p>Coursera · 2023</p>
+            </div>
+          </div>
+          <div class="achievement-card" id="cert-linux">
+            <div class="achievement-icon cert">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>Unix/Linux OS Fundamentals</h4>
+              <p>Infosys Springboard · 2025</p>
+            </div>
+          </div>
+          <div class="achievement-card" id="cert-ai">
+            <div class="achievement-icon cert">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>Introduction to AI</h4>
+              <p>Infosys Springboard · 2025</p>
+            </div>
+          </div>
+          <div class="achievement-card" id="ach-hackathon">
+            <div class="achievement-icon award">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>Vibeathon Hackathon</h4>
+              <p>Built a functional web-based event management system</p>
+            </div>
+          </div>
+          <div class="achievement-card" id="ach-college">
+            <div class="achievement-icon award">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>College of the Event – Advaya 2024</h4>
+              <p>RV Institute of Technology and Management</p>
+            </div>
+          </div>
+          <div class="achievement-card" id="ach-quiz">
+            <div class="achievement-icon award">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="achievement-info">
+              <h4>4th Place – Bot or Not Quiz</h4>
+              <p>AI-ML Club Neuro-Nova</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">05 / Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Open to full-time opportunities, collaborations, and interesting projects</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <div class="open-to-work-big">
+            <div class="otw-header">
+              <span class="pulse-dot big"></span>
+              <h3>Open to Work</h3>
+            </div>
+            <p>I'm actively looking for full-time software developer positions where I can contribute my backend and full-stack skills. Whether you're hiring for Java backend, full-stack development, or API design — I'd love to hear from you!</p>
+            <div class="contact-cards">
+              <a href="mailto:blesson.2018.6@gmail.com" class="contact-card" id="contact-email-card">
+                <div class="contact-card-icon email-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">blesson.2018.6@gmail.com</span>
+                </div>
+                <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="tel:+919497182373" class="contact-card" id="contact-phone-card">
+                <div class="contact-card-icon phone-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l1.27-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-label">Phone</span>
+                  <span class="contact-value">+91 9497182373</span>
+                </div>
+                <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://linkedin.com/in/bleson-denson" target="_blank" class="contact-card" id="contact-linkedin-card">
+                <div class="contact-card-icon linkedin-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-label">LinkedIn</span>
+                  <span class="contact-value">linkedin.com/in/bleson-denson</span>
+                </div>
+                <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://github.com/bleson2003" target="_blank" class="contact-card" id="contact-github-card">
+                <div class="contact-card-icon github-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-label">GitHub</span>
+                  <span class="contact-value">github.com/bleson2003</span>
+                </div>
+                <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right reveal">
+          <form class="contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
+            <h3 class="form-title">Send a Message</h3>
+            <div class="form-group">
+              <label for="form-name">Your Name</label>
+              <input type="text" id="form-name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="form-email">Your Email</label>
+              <input type="email" id="form-email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="form-subject">Subject</label>
+              <input type="text" id="form-subject" placeholder="Job Opportunity / Collaboration" />
+            </div>
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <textarea id="form-message" rows="5" placeholder="Tell me about the opportunity..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+            <div class="form-success" id="form-success">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Message copied to your email client!
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">&lt;BD /&gt;</div>
+        <p class="footer-text">
+          Designed & Built by <strong>Bleson C Denson</strong> · 2026
+        </p>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/bleson-denson" target="_blank" aria-label="LinkedIn" class="footer-social-link" id="footer-linkedin">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/bleson2003" target="_blank" aria-label="GitHub" class="footer-social-link" id="footer-github">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="mailto:blesson.2018.6@gmail.com" aria-label="Email" class="footer-social-link" id="footer-email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
