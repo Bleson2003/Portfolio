@@ -18,45 +18,6 @@ window.addEventListener('load', () => {
 });
 
 // ============================================================
-// 2. CUSTOM CURSOR
-// ============================================================
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursorDot.style.left = mouseX + 'px';
-  cursorDot.style.top = mouseY + 'px';
-});
-
-function animateCursor() {
-  ringX += (mouseX - ringX) * 0.15;
-  ringY += (mouseY - ringY) * 0.15;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top = ringY + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-
-document.querySelectorAll('a, button, .project-card, .edu-card, .achievement-card, .contact-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursorRing.style.width = '48px';
-    cursorRing.style.height = '48px';
-    cursorRing.style.borderColor = 'rgba(79,142,247,0.8)';
-    cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursorRing.style.width = '30px';
-    cursorRing.style.height = '30px';
-    cursorRing.style.borderColor = 'rgba(79,142,247,0.6)';
-    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-  });
-});
-
-// ============================================================
 // 3. NAVBAR – SCROLL & HAMBURGER
 // ============================================================
 const navbar = document.getElementById('navbar');
