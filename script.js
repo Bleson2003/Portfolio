@@ -18,6 +18,27 @@ window.addEventListener('load', () => {
 });
 
 // ============================================================
+// 2. THEME TOGGLE
+// ============================================================
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+// Load saved preference (default: dark)
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') root.setAttribute('data-theme', 'light');
+
+themeToggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  if (next === 'dark') {
+    root.removeAttribute('data-theme');
+  } else {
+    root.setAttribute('data-theme', 'light');
+  }
+  localStorage.setItem('theme', next);
+});
+
+// ============================================================
 // 3. NAVBAR – SCROLL & HAMBURGER
 // ============================================================
 const navbar = document.getElementById('navbar');
@@ -119,16 +140,16 @@ if (canvas) {
 
   function createParticles() {
     particles = [];
-    const count = Math.floor((canvas.width * canvas.height) / 16000);
+    const count = Math.floor((canvas.width * canvas.height) / 28000);
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.5,
-        dx: (Math.random() - 0.5) * 0.3,
-        dy: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.5 ? '79,142,247' : '139,92,246',
+        r: Math.random() * 1 + 0.3,
+        dx: (Math.random() - 0.5) * 0.18,
+        dy: (Math.random() - 0.5) * 0.18,
+        opacity: Math.random() * 0.2 + 0.05,
+        color: '180,190,220',
       });
     }
   }
@@ -154,12 +175,12 @@ if (canvas) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
+        if (dist < 70) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(79,142,247, ${0.1 * (1 - dist / 100)})`;
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = `rgba(180,190,220, ${0.06 * (1 - dist / 70)})`;
+          ctx.lineWidth = 0.4;
           ctx.stroke();
         }
       }
@@ -284,14 +305,93 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================================
-// 12. TECH PILL HOVER GLOW (PROJECT CARDS)
+// 12. PROJECTS CAROUSEL
 // ============================================================
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
+(function () {
+  const carousel = document.getElementById('projects-carousel');
+  const track    = document.getElementById('carousel-track');
+  const prevBtn  = document.getElementById('carousel-prev');
+  const nextBtn  = document.getElementById('carousel-next');
+  const dots     = document.querySelectorAll('.carousel-dot');
+  const hint     = document.querySelector('.carousel-hint span');
+  if (!track || !carousel) return;
+
+  const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+  const total  = slides.length;
+  let current  = 0;
+  let timer    = null;
+
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    if (hint) hint.textContent = `${current + 1} / ${total}`;
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    timer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  function stopAutoplay() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  // Arrow buttons
+  prevBtn.addEventListener('click', () => { goTo(current - 1); startAutoplay(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); startAutoplay(); });
+
+  // Dot buttons
+  dots.forEach(d => d.addEventListener('click', () => {
+    goTo(parseInt(d.dataset.index, 10));
+    startAutoplay();
+  }));
+
+  // Pause on hover, resume on leave
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+
+  // Keyboard arrows (only when carousel is visible)
+  document.addEventListener('keydown', e => {
+    const rect = carousel.getBoundingClientRect();
+    if (rect.top > window.innerHeight || rect.bottom < 0) return;
+    if (e.key === 'ArrowLeft')  { goTo(current - 1); startAutoplay(); }
+    if (e.key === 'ArrowRight') { goTo(current + 1); startAutoplay(); }
   });
-});
+
+  // Touch / swipe
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    stopAutoplay();
+  }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+    startAutoplay();
+  });
+
+  // Init
+  goTo(0);
+  startAutoplay();
+})();
+
+// ============================================================
+// 13. ACHIEVEMENTS INFINITE MARQUEE
+// ============================================================
+(function () {
+  const achievementsGrid = document.querySelector('.achievements-marquee-container .achievements-grid');
+  if (!achievementsGrid) return;
+
+  const innerHTML = achievementsGrid.innerHTML;
+  
+  // Wrap the original list of cards in a group, and duplicate it for seamless looping
+  achievementsGrid.innerHTML = `
+    <div class="marquee-group">${innerHTML}</div>
+    <div class="marquee-group" aria-hidden="true">${innerHTML}</div>
+  `;
+  
+  // Add class that triggers marquee flex layout and CSS scroll animation
+  achievementsGrid.classList.add('marquee-track');
+})();
+
